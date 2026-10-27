@@ -1,5 +1,5 @@
 # ── Etapa 1: Builder ──────────────────────────────────────────────────────
-FROM node:20-alpine AS builder
+FROM node:22.23.4-alpine AS builder
 
 WORKDIR /app
 
@@ -14,7 +14,7 @@ COPY src ./src
 RUN npm install --save-dev @swc/core @swc/cli && npx swc src -d dist --strip-leading-paths
 
 # ── Etapa 2: Producción ───────────────────────────────────────────────────
-FROM node:20-alpine AS runner
+FROM node:22.23.4-alpine AS runner
 
 WORKDIR /app
 
